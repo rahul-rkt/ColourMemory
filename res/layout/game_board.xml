@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/app_bg"
+	android:orientation="vertical" >
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/small_gap" >
+
+		<ImageView
+			android:id="@+id/logo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignBottom="@+id/currentScoreButton"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentTop="true"
+			android:contentDescription="@string/app_name"
+			android:src="@drawable/logo" />
+
+		<Button
+			android:id="@+id/currentScoreButton"
+			style="@style/PlayButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentTop="true"
+			android:layout_centerHorizontal="true"
+			android:layout_marginLeft="@dimen/medium_gap"
+			android:layout_marginRight="@dimen/medium_gap"
+			android:clickable="false"
+			android:text="@string/current_score" />
+
+		<Button
+			android:id="@+id/scoresButton"
+			style="@style/ScoresButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentTop="true"
+			android:text="@string/scores_button" />
+	</RelativeLayout>
+
+	<include
+		android:id="@+id/grid"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginBottom="@dimen/big_gap"
+		android:layout_marginTop="@dimen/big_gap"
+		layout="@layout/grid" />
+
+</LinearLayout>

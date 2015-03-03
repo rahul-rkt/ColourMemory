@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/app_bg"
+	android:padding="@dimen/activity_margin"
+	tools:context="thakur.rahul.colourmemory.MainActivity" >
+
+	<ImageView
+		android:id="@+id/logo"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="@dimen/big_gap"
+		android:contentDescription="@string/app_name"
+		android:src="@drawable/logo" />
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"
+		android:layout_marginBottom="@dimen/big_gap"
+		android:orientation="horizontal" >
+
+		<Button
+			android:id="@+id/startButton"
+			style="@style/PlayButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/start_button" />
+
+		<Button
+			android:id="@+id/scoresButton"
+			style="@style/ScoresButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="@dimen/small_gap"
+			android:text="@string/scores_button" />
+
+		<Button
+			android:id="@+id/exitButton"
+			style="@style/ExitButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="@dimen/small_gap"
+			android:text="@string/exit_button" />
+	</LinearLayout>
+
+</RelativeLayout>
