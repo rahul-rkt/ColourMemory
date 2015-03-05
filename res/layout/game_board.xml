@@ -42,12 +42,28 @@
 			android:text="@string/scores_button" />
 	</RelativeLayout>
 
-	<include
+	<FrameLayout
+		android:id="@+id/container"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_margin="@dimen/small_gap" >
+
+		<include
+			android:id="@+id/grid0"
+			layout="@layout/grid_0" />
+
+		<include
+			android:id="@+id/grid1"
+			layout="@layout/grid_1" />
+	</FrameLayout>
+	<!--
+     	<include
 		android:id="@+id/grid"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_marginBottom="@dimen/big_gap"
 		android:layout_marginTop="@dimen/big_gap"
 		layout="@layout/grid" />
+	-->
 
 </LinearLayout>

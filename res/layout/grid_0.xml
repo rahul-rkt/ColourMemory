@@ -17,28 +17,12 @@
 			android:src="@drawable/card_bg" />
 
 		<ImageView
-			android:id="@+id/R0C0_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
-
-		<ImageView
 			android:id="@+id/R0C1_0"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
 			android:contentDescription="@string/card"
 			android:onClick="imageClick"
 			android:src="@drawable/card_bg" />
-
-		<ImageView
-			android:id="@+id/R0C1_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
 
 		<ImageView
 			android:id="@+id/R0C2_0"
@@ -49,28 +33,12 @@
 			android:src="@drawable/card_bg" />
 
 		<ImageView
-			android:id="@+id/R0C2_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
-
-		<ImageView
 			android:id="@+id/R0C3_0"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
 			android:contentDescription="@string/card"
 			android:onClick="imageClick"
 			android:src="@drawable/card_bg" />
-
-		<ImageView
-			android:id="@+id/R0C3_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
 	</TableRow>
 
 	<TableRow
@@ -86,28 +54,12 @@
 			android:src="@drawable/card_bg" />
 
 		<ImageView
-			android:id="@+id/R1C0_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
-
-		<ImageView
 			android:id="@+id/R1C1_0"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
 			android:contentDescription="@string/card"
 			android:onClick="imageClick"
 			android:src="@drawable/card_bg" />
-
-		<ImageView
-			android:id="@+id/R1C1_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
 
 		<ImageView
 			android:id="@+id/R1C2_0"
@@ -118,28 +70,12 @@
 			android:src="@drawable/card_bg" />
 
 		<ImageView
-			android:id="@+id/R1C2_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
-
-		<ImageView
 			android:id="@+id/R1C3_0"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
 			android:contentDescription="@string/card"
 			android:onClick="imageClick"
 			android:src="@drawable/card_bg" />
-
-		<ImageView
-			android:id="@+id/R1C3_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
 	</TableRow>
 
 	<TableRow
@@ -155,28 +91,12 @@
 			android:src="@drawable/card_bg" />
 
 		<ImageView
-			android:id="@+id/R2C0_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
-
-		<ImageView
 			android:id="@+id/R2C1_0"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
 			android:contentDescription="@string/card"
 			android:onClick="imageClick"
 			android:src="@drawable/card_bg" />
-
-		<ImageView
-			android:id="@+id/R2C1_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
 
 		<ImageView
 			android:id="@+id/R2C2_0"
@@ -187,28 +107,12 @@
 			android:src="@drawable/card_bg" />
 
 		<ImageView
-			android:id="@+id/R2C2_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
-
-		<ImageView
 			android:id="@+id/R2C3_0"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
 			android:contentDescription="@string/card"
 			android:onClick="imageClick"
 			android:src="@drawable/card_bg" />
-
-		<ImageView
-			android:id="@+id/R2C3_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
 	</TableRow>
 
 	<TableRow
@@ -224,28 +128,12 @@
 			android:src="@drawable/card_bg" />
 
 		<ImageView
-			android:id="@+id/R3C0_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
-
-		<ImageView
 			android:id="@+id/R3C1_0"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
 			android:contentDescription="@string/card"
 			android:onClick="imageClick"
 			android:src="@drawable/card_bg" />
-
-		<ImageView
-			android:id="@+id/R3C1_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
 
 		<ImageView
 			android:id="@+id/R3C2_0"
@@ -256,28 +144,12 @@
 			android:src="@drawable/card_bg" />
 
 		<ImageView
-			android:id="@+id/R3C2_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
-
-		<ImageView
 			android:id="@+id/R3C3_0"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
 			android:contentDescription="@string/card"
 			android:onClick="imageClick"
 			android:src="@drawable/card_bg" />
-
-		<ImageView
-			android:id="@+id/R3C3_1"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:clickable="false"
-			android:contentDescription="@string/card"
-			android:visibility="gone" />
 	</TableRow>
 
 </TableLayout>

@@ -26,7 +26,6 @@ public class GameBoard extends Activity {
 
 	public void imageClick(View v) {
 
-		cardController.startAnimation((ImageView) v);
 		if (isFirstImage) {
 			cardController.firstImage((ImageView) v);
 			isFirstImage = !isFirstImage;

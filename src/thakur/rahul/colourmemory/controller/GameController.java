@@ -30,8 +30,8 @@ public class GameController {
 		return image2;
 	}
 
-	public boolean isMatch() {
+	public boolean isNotAMatch() {
 
-		return (image1Type == image2Type);
+		return !(image1Type == image2Type);
 	}
 }

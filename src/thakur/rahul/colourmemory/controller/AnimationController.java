@@ -7,23 +7,53 @@ import android.app.Activity;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 
-public class AnimationController {
+public class AnimationController implements Runnable {
 
 	private Activity activity;
 	private ImageView image1;
 	private ImageView image2;
 	private boolean isFirstImage = true;
+	private volatile static int numThread = 1;
+	private volatile static int threadAllowedToRun = 1;
+	private int myThreadID;
+	private volatile static Object myLock = new Object();
+	private volatile static boolean hasNotSlept = true;
 
-	public AnimationController(Activity activity) {
+	public AnimationController(Activity activity, ImageView image1, ImageView image2) {
 
 		this.activity = activity;
+		this.image1 = image1;
+		this.image2 = image2;
+		this.myThreadID = numThread++;
 	}
 
-	public void animate(ImageView image1, ImageView image2) {
+	@Override
+	public void run() {
 
-		this.image1 = image1;
-		image1.setClickable(false);
-		this.image2 = image2;
+		synchronized (myLock) {
+			while (myThreadID != threadAllowedToRun)
+				try {
+					myLock.wait();
+				} catch (InterruptedException e) {
+				} catch (Exception e) {
+				}
+			animate();
+			if (myThreadID % 2 == 0)
+				if (hasNotSlept)
+					try {
+						Thread.sleep(1000);
+						hasNotSlept = !hasNotSlept;
+					} catch (InterruptedException e) {
+					}
+				else
+					hasNotSlept = !hasNotSlept;
+			myLock.notifyAll();
+			threadAllowedToRun++;
+		}
+	}
+
+	public void animate() {
+
 		if (isFirstImage) {
 			applyRotation(0, 90);
 			isFirstImage = !isFirstImage;
@@ -42,25 +72,23 @@ public class AnimationController {
 		rotation.setFillAfter(true);
 		rotation.setInterpolator(new AccelerateInterpolator());
 		rotation.setAnimationListener(new DisplayNextView(isFirstImage, image1, image2));
-		synchronized (this) {
-			if (isFirstImage)
-				activity.runOnUiThread(new Runnable() {
+		if (isFirstImage)
+			activity.runOnUiThread(new Runnable() {
 
-					@Override
-					public void run() {
+				@Override
+				public void run() {
 
-						image1.startAnimation(rotation);
-					}
-				});
-			else
-				activity.runOnUiThread(new Runnable() {
+					image1.startAnimation(rotation);
+				}
+			});
+		else
+			activity.runOnUiThread(new Runnable() {
 
-					@Override
-					public void run() {
+				@Override
+				public void run() {
 
-						image2.startAnimation(rotation);
-					}
-				});
-		}
+					image2.startAnimation(rotation);
+				}
+			});
 	}
 }
