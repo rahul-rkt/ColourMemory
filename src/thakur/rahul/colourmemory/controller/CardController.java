@@ -14,7 +14,7 @@ public class CardController {
 	private SparseArray<ImageView> cardViewMap;
 	private SparseIntArray cardSwapMap;
 	private volatile AnimationController animationController;
-	private GameController gameController;
+	private volatile GameController gameController;
 	private Thread animationThread;
 
 	public CardController(Activity activity) {
@@ -50,6 +50,7 @@ public class CardController {
 			startAnimation(gameController.getFirstImage());
 			cardViewMap.get(cardSwapMap.get(gameController.getFirstImage().getId())).setClickable(true);
 			startAnimation(gameController.getSecondImage());
-		}
+		} else
+			AnimationController.fixForMatch = true;
 	}
 }

@@ -18,6 +18,7 @@ public class AnimationController implements Runnable {
 	private int myThreadID;
 	private volatile static Object myLock = new Object();
 	private volatile static boolean hasNotSlept = true;
+	public volatile static boolean fixForMatch = false;
 
 	public AnimationController(Activity activity, ImageView image1, ImageView image2) {
 
@@ -39,7 +40,7 @@ public class AnimationController implements Runnable {
 				}
 			animate();
 			if (myThreadID % 2 == 0)
-				if (hasNotSlept)
+				if (hasNotSlept || fixForMatch)
 					try {
 						Thread.sleep(1000);
 						hasNotSlept = !hasNotSlept;
