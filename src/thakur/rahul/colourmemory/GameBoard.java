@@ -5,12 +5,10 @@ import thakur.rahul.colourmemory.controller.CardController;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 public class GameBoard extends Activity {
 
-	private Button currentScore;
 	private CardController cardController;
 	private boolean isFirstImage;
 
@@ -19,7 +17,6 @@ public class GameBoard extends Activity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_board);
-		currentScore = (Button) findViewById(R.id.currentScoreButton);
 		cardController = new CardController(this);
 		isFirstImage = true;
 	}

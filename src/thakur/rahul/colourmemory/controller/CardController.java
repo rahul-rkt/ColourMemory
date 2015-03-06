@@ -15,7 +15,7 @@ public class CardController {
 	private SparseIntArray cardSwapMap;
 	private volatile AnimationController animationController;
 	private volatile GameController gameController;
-	private Thread animationThread;
+	private int currentScore;
 
 	public CardController(Activity activity) {
 
@@ -23,15 +23,15 @@ public class CardController {
 		cardView = new CardView(activity);
 		cardViewMap = cardView.getCardViewMap();
 		cardSwapMap = cardView.getCardSwapMap();
-		new InitialBoardSetupController(cardView.getCardViewArray(), activity.getResources()).generateNewGrid();
+		InitialBoardSetupController.make(cardView.getCardViewArray(), activity.getResources());
+		currentScore = 0;
 	}
 
 	public void startAnimation(ImageView image1) {
 
 		ImageView image2 = cardViewMap.get(cardSwapMap.get(image1.getId()));
-		animationController = new AnimationController(activity, image1, image2);
-		animationThread = new Thread(animationController);
-		animationThread.start();
+		animationController = new AnimationController(activity, image1, image2, currentScore);
+		new Thread(animationController, "AnimationThread").start();
 	}
 
 	public void firstImage(ImageView image0) {
@@ -47,10 +47,14 @@ public class CardController {
 		startAnimation(image0);
 		gameController.setSecondImage(cardViewMap.get(cardSwapMap.get(image0.getId())));
 		if (gameController.isNotAMatch()) {
+			currentScore--;
 			startAnimation(gameController.getFirstImage());
 			cardViewMap.get(cardSwapMap.get(gameController.getFirstImage().getId())).setClickable(true);
 			startAnimation(gameController.getSecondImage());
-		} else
+		} else {
 			AnimationController.fixForMatch = true;
+			currentScore += 2;
+			image0.setClickable(false);
+		}
 	}
 }

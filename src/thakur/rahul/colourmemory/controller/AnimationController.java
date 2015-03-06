@@ -19,13 +19,15 @@ public class AnimationController implements Runnable {
 	private volatile static Object myLock = new Object();
 	private volatile static boolean hasNotSlept = true;
 	public volatile static boolean fixForMatch = false;
+	private volatile CurrentScoreController currentScoreController;
 
-	public AnimationController(Activity activity, ImageView image1, ImageView image2) {
+	public AnimationController(Activity activity, ImageView image1, ImageView image2, int score) {
 
 		this.activity = activity;
 		this.image1 = image1;
 		this.image2 = image2;
 		this.myThreadID = numThread++;
+		currentScoreController = new CurrentScoreController(activity, score);
 	}
 
 	@Override
@@ -48,6 +50,7 @@ public class AnimationController implements Runnable {
 					}
 				else
 					hasNotSlept = !hasNotSlept;
+			currentScoreController.updateCurrentScore();
 			myLock.notifyAll();
 			threadAllowedToRun++;
 		}

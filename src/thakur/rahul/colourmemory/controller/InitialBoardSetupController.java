@@ -16,15 +16,21 @@ public class InitialBoardSetupController {
 	private int randomCardID;
 	private Random randomGenerator;
 
-	public InitialBoardSetupController(ImageView[][][] cardViewArray, Resources resources) {
+	private InitialBoardSetupController(ImageView[][][] cardViewArray, Resources resources) {
 
 		this.cardViewArray = cardViewArray;
 		this.resources = resources;
 		cardCounter = new SparseIntArray();
 		randomGenerator = new Random();
+		generateNewGrid();
 	}
 
-	public void generateNewGrid() {
+	public static InitialBoardSetupController make(ImageView[][][] cardViewArray, Resources resources) {
+
+		return new InitialBoardSetupController(cardViewArray, resources);
+	}
+
+	private void generateNewGrid() {
 
 		for (int i = 0; i < 4; i++)
 			for (int j = 0; j < 4; j++) {
