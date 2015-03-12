@@ -1,18 +1,24 @@
 
-package thakur.rahul.colourmemory.view.Animation;
+package thakur.rahul.colourmemory.view.animation;
 
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 
-public final class DisplayNextView implements Animation.AnimationListener {
+/**
+ * animationListener for Flip Animation. Swaps between views when first half of the animation is complete.
+ *
+ * @author rahulthakur
+ */
+public final class DisplayNextView implements AnimationListener {
 
-	private boolean mCurrentView;
+	private boolean currentView;
 	private ImageView image1;
 	private ImageView image2;
 
 	public DisplayNextView(boolean currentView, ImageView image1, ImageView image2) {
 
-		mCurrentView = currentView;
+		this.currentView = currentView;
 		this.image1 = image1;
 		this.image2 = image2;
 	}
@@ -25,7 +31,7 @@ public final class DisplayNextView implements Animation.AnimationListener {
 	@Override
 	public void onAnimationEnd(Animation animation) {
 
-		image1.post(new SwapViews(mCurrentView, image1, image2));
+		image1.post(new SwapViews(currentView, image1, image2));
 	}
 
 	@Override

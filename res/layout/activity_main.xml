@@ -1,54 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**** ColourMemory MainActivity Layout File - Portrait Mode
+**** @author rahulthakur
+-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@color/app_bg"
-	android:padding="@dimen/activity_margin"
+	android:background="@color/orange_tang"
+	android:gravity="center_horizontal"
 	tools:context="thakur.rahul.colourmemory.MainActivity" >
 
 	<ImageView
-		android:id="@+id/logo"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_above="@+id/buttonsContainer"
 		android:layout_alignParentTop="true"
-		android:layout_centerHorizontal="true"
 		android:layout_marginTop="@dimen/big_gap"
 		android:contentDescription="@string/app_name"
+		android:scaleType="fitCenter"
 		android:src="@drawable/logo" />
 
 	<LinearLayout
-		android:layout_width="wrap_content"
+		android:id="@id/buttonsContainer"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
-		android:layout_centerHorizontal="true"
 		android:layout_marginBottom="@dimen/big_gap"
+		android:gravity="center"
 		android:orientation="vertical" >
 
 		<Button
 			android:id="@+id/startButton"
-			style="@style/PlayButton"
-			android:layout_width="match_parent"
+			style="@style/buttonStyle"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:background="@drawable/red_button"
 			android:onClick="startGame"
 			android:text="@string/start_button" />
 
 		<Button
 			android:id="@+id/scoresButton"
-			style="@style/ScoresButton"
-			android:layout_width="match_parent"
+			style="@style/buttonStyle"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/small_gap"
+			android:background="@drawable/beige_button"
 			android:onClick="showScores"
 			android:text="@string/scores_button" />
 
 		<Button
 			android:id="@+id/exitButton"
-			style="@style/ExitButton"
-			android:layout_width="match_parent"
+			style="@style/buttonStyle"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/small_gap"
+			android:background="@drawable/black_button"
 			android:onClick="closeApplication"
 			android:text="@string/exit_button" />
 	</LinearLayout>
+
+	<FrameLayout
+		android:id="@+id/fragment_container_high_score_list_main"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" />
 
 </RelativeLayout>

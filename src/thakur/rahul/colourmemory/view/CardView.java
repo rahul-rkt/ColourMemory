@@ -7,6 +7,12 @@ import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.widget.ImageView;
 
+/**
+ * Maps all the ImageViews in <i>include_grid_0.xml</i> & <i>include_grid_1.xml</i> layout files<br>
+ * Mapping is done without using loops for faster result. Also, the grid size is fixed at 4x4
+ *
+ * @author rahulthakur
+ */
 public class CardView {
 
 	private ImageView[][][] cardViewArray;
@@ -72,6 +78,9 @@ public class CardView {
 		cardViewArray[3][3][1] = (ImageView) activity.findViewById(R.id.R3C3_1);
 	}
 
+	/**
+	 ** CardViewArray contains all the individual ImageViews on both grids
+	 */
 	public ImageView[][][] getCardViewArray() {
 
 		return cardViewArray;
@@ -124,6 +133,9 @@ public class CardView {
 		cardViewMap.put(R.id.R3C3_1, cardViewArray[3][3][1]);
 	}
 
+	/**
+	 ** CardViewMap contains all the ImageViews mapped to their respective IDs for faster search and access time
+	 */
 	public SparseArray<ImageView> getCardViewMap() {
 
 		return cardViewMap;
@@ -176,6 +188,10 @@ public class CardView {
 		cardSwapMap.put(R.id.R3C3_1, R.id.R3C3_0);
 	}
 
+	/**
+	 ** CardSwapMap contains all the ImageViews mapped to their respective counterparts for easily retrieving animation
+	 * partner
+	 */
 	public SparseIntArray getCardSwapMap() {
 
 		return cardSwapMap;

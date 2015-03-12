@@ -1,61 +1,69 @@
 
 package thakur.rahul.colourmemory.controller;
 
-import thakur.rahul.colourmemory.view.Animation.DisplayNextView;
-import thakur.rahul.colourmemory.view.Animation.Flip3dAnimation;
+import thakur.rahul.colourmemory.R;
+import thakur.rahul.colourmemory.view.animation.DisplayNextView;
+import thakur.rahul.colourmemory.view.animation.FlipAnimation;
 import android.app.Activity;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.Button;
 import android.widget.ImageView;
 
+/**
+ * Creates, maintains and runs every Flip Animation in order. Updates current score when turn animation is complete.
+ *
+ * @author rahulthakur
+ */
 public class AnimationController implements Runnable {
 
 	private Activity activity;
 	private ImageView image1;
 	private ImageView image2;
 	private boolean isFirstImage = true;
-	private volatile static int numThread = 1;
+	private boolean putToSleep;
+	private ScoreHandler scorer;
+	private int currentThread;
+	private volatile static int totalThreads = 1;
 	private volatile static int threadAllowedToRun = 1;
-	private int myThreadID;
-	private volatile static Object myLock = new Object();
-	private volatile static boolean hasNotSlept = true;
-	public volatile static boolean fixForMatch = false;
-	private volatile CurrentScoreController currentScoreController;
+	private volatile static Object lock = new Object();
 
-	public AnimationController(Activity activity, ImageView image1, ImageView image2, int score) {
+	public AnimationController(Activity activity, ImageView image1, ImageView image2, boolean putToSleep, Integer scoreToUpdate) {
 
 		this.activity = activity;
 		this.image1 = image1;
 		this.image2 = image2;
-		this.myThreadID = numThread++;
-		currentScoreController = new CurrentScoreController(activity, score);
+		this.putToSleep = putToSleep;
+		if (scoreToUpdate != null)
+			scorer = new ScoreHandler(scoreToUpdate);
+		this.currentThread = totalThreads++;
 	}
 
 	@Override
 	public void run() {
 
-		synchronized (myLock) {
-			while (myThreadID != threadAllowedToRun)
+		synchronized (lock) {
+			while (currentThread != threadAllowedToRun)
 				try {
-					myLock.wait();
+					lock.wait();
 				} catch (InterruptedException e) {
 				} catch (Exception e) {
 				}
 			animate();
-			if (myThreadID % 2 == 0)
-				if (hasNotSlept || fixForMatch)
-					try {
-						Thread.sleep(1000);
-						hasNotSlept = !hasNotSlept;
-					} catch (InterruptedException e) {
-					}
-				else
-					hasNotSlept = !hasNotSlept;
-			currentScoreController.updateCurrentScore();
-			myLock.notifyAll();
+			if (putToSleep)
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+				}
+			if (scorer != null)
+				scorer.updateCurrentScore();
+			lock.notifyAll();
 			threadAllowedToRun++;
 		}
 	}
 
+	/**
+	 * Starts first half of the Flip Animation.
+	 */
 	public void animate() {
 
 		if (isFirstImage) {
@@ -67,11 +75,14 @@ public class AnimationController implements Runnable {
 		}
 	}
 
+	/**
+	 * Runs first half of the animation sequence.
+	 */
 	private void applyRotation(float start, float end) {
 
 		final float centerX = image1.getWidth() / 2.0f;
 		final float centerY = image1.getHeight() / 2.0f;
-		final Flip3dAnimation rotation = new Flip3dAnimation(start, end, centerX, centerY);
+		final FlipAnimation rotation = new FlipAnimation(start, end, centerX, centerY);
 		rotation.setDuration(300);
 		rotation.setFillAfter(true);
 		rotation.setInterpolator(new AccelerateInterpolator());
@@ -94,5 +105,37 @@ public class AnimationController implements Runnable {
 					image2.startAnimation(rotation);
 				}
 			});
+	}
+
+	/**
+	 * Updates current score from UI Thread.
+	 *
+	 * @author rahulthakur
+	 */
+	private class ScoreHandler {
+
+		private Button currentScoreButton;
+		private int scoreToUpdate;
+
+		private ScoreHandler(int score) {
+
+			currentScoreButton = (Button) activity.findViewById(R.id.currentScoreButton);
+			scoreToUpdate = score;
+		}
+
+		/**
+		 * Updates current score from UI Thread.
+		 */
+		public void updateCurrentScore() {
+
+			activity.runOnUiThread(new Runnable() {
+
+				@Override
+				public void run() {
+
+					currentScoreButton.setText(String.valueOf(scoreToUpdate));
+				}
+			});
+		}
 	}
 }

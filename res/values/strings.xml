@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+**** String Values
+**** @author rahulthakur
+-->
 <resources>
 
 	<string name="app_name">Colour Memory</string>
@@ -7,8 +11,17 @@
 	<string name="exit_button">Quit</string>
 	<string name="current_score">0</string>
 	<string name="card">Card</string>
+	<string name="high_scores">High Scores</string>
+	<string name="congrats">Congratulations</string>
+	<string name="hint">Enter your name here..</string>
+	<string name="new_score_msg">You have a new High Score</string>
+	<string name="save">Save</string>
 
 	<!-- COLOURS -->
-	<color name="app_bg">#FFC48C</color>
+	<color name="orange_tang">#E4844A</color>
+	<color name="purple_haze">#91204D</color>
+	<color name="sad_yellow">#E8BF56</color>
+	<color name="dirty_chocolate">#452632</color>
+	<color name="chilled_lime">#E2F7CE</color>
 
 </resources>

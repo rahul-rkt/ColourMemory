@@ -4,6 +4,11 @@ package thakur.rahul.colourmemory.model;
 import thakur.rahul.colourmemory.R;
 import android.util.SparseArray;
 
+/**
+ * Enum holding all the different types Cards.
+ *
+ * @author rahulthakur
+ */
 public enum CardModel {
 	CARD1(1, R.drawable.colour1),
 	CARD2(2, R.drawable.colour2),
@@ -14,6 +19,9 @@ public enum CardModel {
 	CARD7(7, R.drawable.colour7),
 	CARD8(8, R.drawable.colour8);
 
+	/**
+	 * Adds all Cards to a SparseArray to get via ID.
+	 */
 	private static final SparseArray<CardModel> byId = new SparseArray<CardModel>();
 	static {
 		for (CardModel c : CardModel.values())
@@ -22,6 +30,9 @@ public enum CardModel {
 	private int id;
 	private int type;
 
+	/**
+	 * Gets Card via ID.
+	 */
 	public static CardModel getById(int id) {
 
 		return byId.get(id);
@@ -33,6 +44,9 @@ public enum CardModel {
 		this.type = type;
 	}
 
+	/**
+	 * Gets Drawable ID for the associated Card.
+	 */
 	public int getType() {
 
 		return type;
